@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Grid, TextField } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import LoginController from "../Controllers/Login";
 
 const LoginTransportista = () => {
+  const [Auth, setAuth] = useState({ value: false, message: "" });
   const { register, handleSubmit, errors } = useForm();
   const history = useHistory();
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
     const Login = new LoginController();
-    const result = await Login.Colaborador(data);
+    const result = await Login.Transportista(data);
     if (result.Success) {
-      history.push("/main/colaborador");
+      history.replace("/main/transportista");
+    } else {
+      setAuth({
+        value: true,
+        message: result.Response,
+      });
     }
     console.log(result);
   };
@@ -62,6 +68,9 @@ const LoginTransportista = () => {
               </span>
             </div>
           </Grid>
+          <span className="text-danger text-small mb-0">
+            {Auth.value && Auth.message}
+          </span>
           <Grid item ld={6}>
             <Button
               type="submit"
