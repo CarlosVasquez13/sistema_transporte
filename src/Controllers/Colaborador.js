@@ -9,7 +9,6 @@ export default class ColaboradorController {
       },
     });
     let result = await res.json();
-    console.log(result);
     return result;
   };
 }

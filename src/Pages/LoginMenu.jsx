@@ -13,7 +13,7 @@ const LoginMenu = (props) => {
     history.push("/login/transportista");
   };
   return (
-    <div className="d-block">
+    <div className="d-block mt-4">
       <h1>Iniciar Sesión</h1>
       <Button
         variant="contained"

@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import "./App.css";
 import NewRecorrido from "./Components/NewRecorrido";
 import AddColaborador from "./Pages/AddColaborador";
@@ -12,6 +17,18 @@ import MainTransportista from "./Pages/MainTransportista";
 import Sucursales from "./Pages/Sucursales";
 
 function App() {
+  const remove = () => {
+    window.sessionStorage.removeItem("usuario");
+    window.sessionStorage.removeItem("id");
+  };
+  const LogOut = () => {
+    return (
+      <React.Fragment>
+        {remove}
+        <Redirect to="/" />
+      </React.Fragment>
+    );
+  };
   return (
     <Router>
       <div className="App">
@@ -43,6 +60,7 @@ function App() {
             component={NewRecorrido}
           />
           <Route path="/mainReport" exact component={MainReport} />
+          <Route path="/logout" exact component={LogOut} />
         </Switch>
       </div>
     </Router>

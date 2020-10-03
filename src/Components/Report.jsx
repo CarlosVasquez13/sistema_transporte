@@ -9,7 +9,7 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import React, { useEffect } from "react";
+import React from "react";
 
 const ReportTransp = ({ Report }) => {
   const splitDate = (date) => {
@@ -19,9 +19,9 @@ const ReportTransp = ({ Report }) => {
   const calTotal = () => {
     let total = 0;
     Report.forEach((element) => {
-      total += element.tarifa;
+      total += element.tarifa * element.distancia;
     });
-    return total;
+    return total.toFixed(2);
   };
 
   return (
@@ -36,7 +36,7 @@ const ReportTransp = ({ Report }) => {
       </Toolbar>
       <Table aria-label="simple table">
         <TableHead>
-          <TableRow>
+          <TableRow className="border border-dark">
             <TableCell>Usuario</TableCell>
             <TableCell align="right">Fecha</TableCell>
             <TableCell align="right">Distancia</TableCell>

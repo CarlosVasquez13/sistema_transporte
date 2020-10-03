@@ -1,17 +1,11 @@
 import { Button, Grid } from "@material-ui/core";
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MainColaborador = () => {
-  const history = useHistory();
-
-  const onSucursal = () => {
-    history.push("/sucursal");
-  };
-
   return (
     <div>
-      <h1>Colaboradores</h1>
+      <h1 className="mt-4">Colaboradores</h1>
       <Grid
         container
         direction="column"

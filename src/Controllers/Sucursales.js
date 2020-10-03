@@ -9,7 +9,6 @@ export default class SucursalController {
       },
     });
     let result = await res.json();
-    console.log(result);
     return result;
   };
 
@@ -24,7 +23,6 @@ export default class SucursalController {
       },
     });
     let result = await res.json();
-    console.log(result);
     return result;
   };
 
@@ -38,7 +36,6 @@ export default class SucursalController {
       },
     });
     let result = await res.json();
-    console.log(result);
     return result;
   };
 }

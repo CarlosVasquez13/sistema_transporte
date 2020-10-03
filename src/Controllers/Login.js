@@ -1,6 +1,5 @@
 export default class LoginController {
   Colaborador = async (data) => {
-    console.log("data", data);
     var url = "http://localhost:3001/api/login/colaborador";
 
     let res = await fetch(url, {
@@ -19,7 +18,6 @@ export default class LoginController {
   };
 
   Transportista = async (data) => {
-    console.log("data", data);
     var url = "http://localhost:3001/api/login/transportista";
 
     let res = await fetch(url, {
@@ -34,7 +32,6 @@ export default class LoginController {
       window.sessionStorage.setItem("usuario", result.Items.usuario);
       window.sessionStorage.setItem("id", result.Items.id);
     }
-    console.log(result);
     return result;
   };
 }

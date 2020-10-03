@@ -51,11 +51,17 @@ const MainReport = () => {
       fechaInicial: data.fechaInicial,
       fechaFinal: data.fechaFinal,
     });
-    if (result.Success) {
+    if (!result.Error) {
       setReport({
         load: true,
         items: result.Items,
       });
+    } else {
+      setReport({
+        load: false,
+        items: [],
+      });
+      alert("Este transportista no tiene recorridos registrados.");
     }
   };
 
@@ -76,7 +82,9 @@ const MainReport = () => {
 
   return (
     <div>
-      <h4 className="border-bottom border-green">Reporte Recorridos</h4>
+      <h4 className="border-bottom mt-5 mb-4 border-green">
+        Reporte Recorridos
+      </h4>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid
           container
@@ -96,7 +104,9 @@ const MainReport = () => {
               color="secondary"
               className="ml-3"
             >
-              Transportista
+              {TrsptaSelected.value
+                ? "✎ Transportista"
+                : "Seleccionar trasportista"}
             </Button>
           </Grid>
           <Grid item lg={8} className="d-flex border border-danger mb-2">

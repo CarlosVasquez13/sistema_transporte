@@ -23,7 +23,6 @@ const MainTransportista = () => {
         items: result.Items,
       });
     }
-    console.log("result", result);
   };
   const handleClose = () => {
     setopen(false);
@@ -38,7 +37,7 @@ const MainTransportista = () => {
 
   return (
     <div>
-      <h1>Colaboradores</h1>
+      <h1 className="mt-4">Transportista</h1>
       <Grid container direction="column" spacing={4} alignContent="center">
         <Grid item lg={5}>
           <Button

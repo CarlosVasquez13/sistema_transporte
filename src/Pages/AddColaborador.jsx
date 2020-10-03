@@ -63,6 +63,8 @@ const AddColaborador = () => {
         value: true,
         message: result.Response,
       });
+    } else {
+      alert("Usuario agregado.");
     }
   };
 
@@ -72,8 +74,8 @@ const AddColaborador = () => {
 
   return (
     <div>
-      <h1>agregar colaborador</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
+        <h1>agregar colaborador</h1>
         <Grid
           container
           direction="column"
@@ -88,7 +90,7 @@ const AddColaborador = () => {
           </Grid>
 
           <Grid item>
-            <Button variant="outlined" onClick={handleOpen}>
+            <Button variant="outlined" color="primary" onClick={handleOpen}>
               {SelectedCol.value
                 ? "Cambiar colaborador"
                 : "Seleccionar colaborador"}
@@ -96,6 +98,7 @@ const AddColaborador = () => {
           </Grid>
           <Grid item lg={6}>
             <TextField
+              style={{ width: "100%" }}
               id="standard-basic"
               label="Distancia del recorrido(km)"
               name="distancia"

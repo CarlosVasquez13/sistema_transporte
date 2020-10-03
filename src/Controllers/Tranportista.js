@@ -9,7 +9,6 @@ export default class {
       },
     });
     let result = await res.json();
-    console.log(result);
     return result;
   };
 }

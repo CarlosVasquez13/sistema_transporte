@@ -15,8 +15,15 @@ const SucursalDialog = ({ sucursal }) => {
 
   return (
     <React.Fragment>
-      <ListItem button component="button" onClick={handleOpen}>
+      <ListItem
+        button
+        component="button"
+        onClick={handleOpen}
+        style={{ width: "25%" }}
+        className="border border-primary mx-auto d-block"
+      >
         <ListItemText primary={sucursal.nombre} />
+        <ListItemText primary={sucursal.direccion} />
       </ListItem>
 
       <Dialog

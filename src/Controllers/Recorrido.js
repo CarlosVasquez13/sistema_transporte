@@ -1,7 +1,6 @@
 export default class {
   newRecorrido = async (data) => {
     let idTransportista = window.sessionStorage.getItem("id");
-    console.log("idTransportista", idTransportista);
     var url = "http://localhost:3001/api/recorrido/nuevo-recorrido";
 
     let res = await fetch(url, {
@@ -16,7 +15,6 @@ export default class {
       },
     });
     let result = await res.json();
-    console.log(result);
     return result;
   };
 

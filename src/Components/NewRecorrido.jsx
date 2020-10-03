@@ -6,6 +6,7 @@ import {
   Dialog,
   DialogTitle,
   Grid,
+  List,
   ListItem,
   ListItemAvatar,
   ListItemSecondaryAction,
@@ -22,6 +23,8 @@ const NewRecorrido = () => {
     load: false,
     items: [],
   });
+  const [Selected, setSelected] = useState({ value: false, items: [] });
+
   const [open, setOpen] = useState(false);
   const params = useParams();
   const { handleSubmit } = useForm();
@@ -40,6 +43,19 @@ const NewRecorrido = () => {
     }
 
     setChecked(newChecked);
+    const newSelected = [];
+    Colaboradores.items.forEach((user) => {
+      newChecked.forEach((element) => {
+        if (user.id === element) {
+          newSelected.push(user);
+          console.log("coninciden", element, user.id);
+          setSelected({
+            value: true,
+            items: newSelected,
+          });
+        }
+      });
+    });
   };
 
   const getColaboradores = async () => {
@@ -83,31 +99,43 @@ const NewRecorrido = () => {
 
   return (
     <div>
-      <h1>Nuevo recorrido sucursal {params.nombre}</h1>
       <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
-        <Grid
-          container
-          direction="column"
-          justify
-          spacing={3}
-          alignContent="center"
-        >
-          <Grid item lg={5}>
+        <h3>Nuevo recorrido sucursal {params.nombre}</h3>
+        <Grid container spacing={3} alignItems="center" className="d-flex">
+          <Grid item lg={10} className="mx-auto">
             <Button
               variant="outlined"
               onClick={handleOpen}
+              style={{ width: "40%" }}
               color="secondary"
-              className="btn-block"
             >
               Seleccionar usuarios{`(${checked.length})`}
             </Button>
           </Grid>
-          <Grid item lg={5}>
+          <Grid item lg={8} className="mx-auto">
+            <List
+              component="div"
+              aria-label="secondary"
+              className="bg-gray d-flex"
+            >
+              {Selected.value &&
+                Selected.items.map((element) => (
+                  <ListItem className="border border-primary mx-3 d-block">
+                    <ListItemText primary={`Usuario: ${element.nombre}`} />
+                    <ListItemText primary={`Direccion: ${element.direccion}`} />
+                    <ListItemText
+                      primary={`Distancia: ${element.distancia} km`}
+                    />
+                  </ListItem>
+                ))}
+            </List>
+          </Grid>
+          <Grid item lg={10} className="mx-auto">
             <Button
               variant="contained"
               type="submit"
               color="primary"
-              className="btn-block"
+              style={{ width: "40%" }}
             >
               Registrar Recorrido
             </Button>

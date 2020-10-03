@@ -22,15 +22,11 @@ const Sucursales = () => {
 
   return (
     <div>
-      <h1>Sucursales</h1>
-      <Grid container justify="center">
-        <List component="nav" aria-label="secondary mailbox folders">
-          {Data.load &&
-            Data.items.map((sucursal) => (
-              <SucursalDialog sucursal={sucursal} />
-            ))}
-        </List>
-      </Grid>
+      <h1 className="mt-4">Sucursales</h1>
+      <List component="nav" aria-label="secondary" className="d-flex">
+        {Data.load &&
+          Data.items.map((sucursal) => <SucursalDialog sucursal={sucursal} />)}
+      </List>
     </div>
   );
 };
